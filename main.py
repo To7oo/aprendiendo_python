@@ -1,17 +1,7 @@
-import sys, webbrowser
+import pandas as pd
 
-args = sys.argv[1:]
+df = pd.read_csv('./customers/titanic.csv', sep=',')
 
-if len(args) < 1:
-    print('No se ha proporcionado una ubicación')
-    exit()
+adult_names = df.loc[df["Age"] > 35, "Name"]
 
-
-adress = ' '.join(args)
-
-url = 'https://www.google.com/maps/place/'
-
-webbrowser.open_new(url + adress)
-
-print('fin del programa')
-print('Holi')
+print(adult_names)
